@@ -1,0 +1,166 @@
+*, ::after, ::before {
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "GTAmerica-STD-Bold";
+  src: url('../fonts/gt-america/gt-america-standard-bold.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GTAmerica-STD-Medium";
+  src: url('../fonts/gt-america/gt-america-standard-medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GTAmerica-STD-Regular";
+  src: url('../fonts/gt-america/gt-america-standard-regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GTAmerica-Bold";
+  src: url('../fonts/gt-america/gt-america-standard-bold.ttf');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GTAmerica-Medium";
+  src: url('../fonts/gt-america/gt-america-standard-medium.ttf');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "GTAmerica-Regular";
+  src: url('../fonts/gt-america/gt-america-standard-regular.ttf');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Proxima-Regular";
+  src: url('../fonts/proxima-nova/proximanova-regular.otf');
+  font-weight: 400;
+  font-style: normal;
+}
+
+$font-family-bold: "GTAmerica-Bold";
+$font-family-Medium: "GTAmerica-Medium";
+$body-font-family: "GTAmerica-Regular";
+$proxima-font-regular: "Proxima-Regular";
+$body-font-size: 12px;
+
+// Font Weights
+$ft_black_900: 900;
+$ft_extra_bold_800: 800;
+$ft_bold_700: 700;
+$ft_semibold_600: 600;
+$ft_regular_400: 400;
+$ft_light_300: 300;
+$ft_extra_light_200: 200;
+// Transition
+$transition: all 0.5s;
+
+body{
+  font-size: $body-font-size;
+  font-family: $body-font-family;
+  color: $body-color;
+  font-weight:$ft_regular_400;
+  margin:0;
+  padding-right:0 !important;
+  line-height:14px;
+  letter-spacing: -0.03em;
+  overflow-x:hidden;
+  -webkit-transition: $transition;
+  -o-transition: $transition;
+  -ms-transition: $transition;
+  -moz-transition: $transition;
+  transition: $transition;
+}
+// Font Size Define
+h1, h2, h3, h4, h5, h6 {
+  color: $body-color;
+  font-family: $body-font-family;
+  line-height: 1.2;
+ }
+
+$-h1: 40px;
+$-h2: 28px;
+$-h3: 24px;
+$-h4: 18px;
+$-h5: 16px;
+$-h6: 14px;
+$para-font: 16px;
+$border-rad5: 5px;
+
+h1 {
+  font-size: $-h1;
+  margin:0;
+}
+h2 {
+  font-size: $-h2;
+  margin:0;
+}
+h3 {
+  font-size: $-h3;
+  margin:0;
+}
+h4 {
+  font-size: $-h4;
+  margin:0;
+}
+h5 {
+  font-size: $-h5;
+  margin:0;
+}
+h6 {
+  font-size: $-h6;
+  margin:0;
+}
+p {
+  font-size: $para-font;
+  margin: 0;
+}
+i{
+	&:before{
+		margin-left:0 !important;
+	}
+}
+a{
+	color:$primary-color;
+	font-weight: $ft_regular_400;
+	text-transform:capitalize;
+	text-decoration:none;
+	-webkit-transition: $transition;
+	  -o-transition: $transition;
+	  -ms-transition: $transition;
+	  -moz-transition: $transition;
+	  transition: $transition;
+	  &:hover{
+		text-decoration:none;
+		-webkit-transition: $transition;
+		  -o-transition: $transition;
+		  -ms-transition: $transition;
+		  -moz-transition: $transition;
+		  transition: $transition;
+	  }
+}
+ul{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+input{
+	&:focus{
+		box-shadow:none;
+		outline:none;
+	}
+}
+.pointer-events{
+  pointer-events: none;
+}
+::placeholder {
+  color: #DDDDDD;
+}
+// Custom
+

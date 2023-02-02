@@ -1,0 +1,211 @@
+{
+  "name": "espressoFlow",
+  "version": "2.2.0",
+  "private": true,
+  "author": "espresso <engineer@espres.so>",
+  "repository": "https://github.com/espresso-Displays/edas-eletcron.git",
+  "description": "espressoFlow is engineered for your life on the move multi-screening for work and play is re-defined with an intuitive and intelligent software innovation – allowing you to work and configure easier than ever before.",
+  "homepage": "./",
+  "main": "public/electron.js",
+  "dependencies": {
+    "@babel/plugin-transform-react-jsx-self": "^7.16.7",
+    "@babel/plugin-transform-react-jsx-source": "^7.16.7",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "axios": "^0.26.1",
+    "chai": "^4.3.4",
+    "css-loader": "^6.5.1",
+    "dotenv": "^14.3.0",
+    "edid-reader": "^0.4.0",
+    "electron-deeplink": "1.0.10",
+    "electron-is-dev": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-store": "^8.0.1",
+    "electron-updater": "^4.6.5",
+    "find-process": "^1.4.7",
+    "fpm": "^1.5.11",
+    "getos": "^3.2.1",
+    "install": "^0.13.0",
+    "jwt-decode": "^3.1.2",
+    "line-reader": "^0.4.0",
+    "mocha": "^9.1.3",
+    "nanoid": "^4.0.0",
+    "node-addon-api": "^4.3.0",
+    "node-global-key-listener": "^0.1.1",
+    "node-localstorage": "^2.2.1",
+    "node-os-utils": "^1.3.7",
+    "os": "^0.1.2",
+    "os-name": "^5.0.1",
+    "platform": "^1.3.6",
+    "rc-slider": "^10.0.0",
+    "react": "^17.0.2",
+    "react-awesome-slider": "^4.1.0",
+    "react-beautiful-dnd": "^13.1.0",
+    "react-dom": "^17.0.2",
+    "react-joyride": "^2.5.3",
+    "react-modal": "^3.14.4",
+    "react-outside-click-handler": "^1.3.0",
+    "react-rangeslider": "^2.2.0",
+    "react-router-dom": "^5.3.0",
+    "react-scripts": "4.0.3",
+    "react-select": "^5.7.0",
+    "react-slick": "^0.28.1",
+    "react-sortablejs": "6.0.0",
+    "react-tabs-redux": "^4.0.0",
+    "react-toast-notifications": "^2.5.1",
+    "react-tooltip": "^4.5.1",
+    "rx": "^4.1.0",
+    "sass": "^1.43.4",
+    "sass-loader": "^12.3.0",
+    "slick-carousel": "^1.8.1",
+    "socket.io-client": "^4.3.2",
+    "sortablejs": "^1.15.0",
+    "style-loader": "^3.3.1",
+    "underscore": "^1.13.2",
+    "universal-analytics": "^0.5.3",
+    "web-vitals": "^1.0.1",
+    "zustand": "^3.6.5"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "electron:start": "concurrently -k \"cross-env BROWSER=none npm start\" \"wait-on http://localhost:3000 && electronmon .\"",
+    "electron:package:mac": "rm -rf dist && npm run build && electron-builder -m -c.extraMetadata.main=build/electron.js",
+    "electron:package:win": "yarn build && electron-builder -w -c.extraMetadata.main=build/electron.js",
+    "electron:package:linux": "yarn build && electron-builder -l -c.extraMetadata.main=build/electron.js",
+    "deploy:mac": "electron-builder build --mac --publish always",
+    "deploy:win": "electron-builder build --win --publish always",
+    "test:sockets": "mocha  --timeout 20000 'src/backend/windows/test/**/*.js'"
+  },
+  "optionalDependencies": {
+    "buffer-image-size": "^0.6.4",
+    "exe-icon-extractor": "^1.0.8"
+  },
+  "devDependencies": {
+    "@types/sortablejs": "^1.13.0",
+    "concurrently": "^6.2.1",
+    "cross-env": "^7.0.3",
+    "electron": "^13.1.9",
+    "electron-builder": "^23.1.0",
+    "electron-notarize": "^1.1.1",
+    "electron-reloader": "^1.2.1",
+    "electronmon": "^2.0.1",
+    "wait-on": "^6.0.0"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      "last 1 electron version"
+    ],
+    "development": [
+      "last 1 electron version"
+    ]
+  },
+  "build": {
+    "appId": "com.flow.espresso",
+    "productName": "espressoFlow",
+    "afterSign": "./afterSignHook.js",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "node_modules/**/*",
+      "package.json"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    },
+    "protocols": [
+      {
+        "name": "espressoFlow",
+        "schemes": [
+          "espressoFlow"
+        ]
+      }
+    ],
+    "extraResources": [
+      {
+        "from": "./src/assets",
+        "to": "assets"
+      },
+      {
+        "from": "./app-update.yml",
+        "to": "app-update.yml"
+      }
+    ],
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "espresso-Displays",
+        "repo": "espressoFlowReleaseWin"
+      }
+    ],
+    "mac": {
+      "target": [
+        "zip",
+        "dmg"
+      ],
+      "icon": "./src/assets/appIconRound-1024@2x.icns",
+      "hardenedRuntime": true
+    },
+    "pkg": {
+      "installLocation": "/Applications",
+      "allowAnywhere": true,
+      "allowCurrentUserHome": true,
+      "allowRootDirectory": true,
+      "license": "./src/pkg/license.html",
+      "welcome": "./src/pkg/welcome.txt",
+      "conclusion": "./src/pkg/conclusion.txt",
+      "isVersionChecked": true,
+      "isRelocatable": false,
+      "overwriteAction": "upgrade"
+    },
+    "win": {
+      "target": [
+        "nsis",
+        "zip"
+      ],
+      "icon": "./src/assets/appIconRound-1024@2x.icns",
+      "certificateSubjectName": "Espresso Displays Pty Ltd",
+      "signingHashAlgorithms": [
+        "sha256"
+      ],
+      "publisherName": "Espresso Displays Pty Ltd",
+      "signAndEditExecutable": true
+    },
+    "linux": {
+      "target": "deb"
+    },
+    "nsis": {
+      "perMachine": true
+    },
+    "dmg": {
+      "background": "./src/assets/installer.png",
+      "icon": "./src/assets/appIconRound-1024@2x.icns",
+      "iconSize": 80,
+      "window": {
+        "width": 540,
+        "height": 380
+      },
+      "contents": [
+        {
+          "x": 139,
+          "y": 240
+        },
+        {
+          "x": 440,
+          "y": 240,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ]
+    }
+  }
+}
